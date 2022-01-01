@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.14.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "ethers": "5.5.1",
     "prettier": "2.1.2",
     "wsrun": "^5.2.1"
@@ -29,7 +30,7 @@
     "trailingComma": "es5"
   },
   "engines": {
-    "node": ">=10",
+    "node": ">=16",
     "yarn": "^1.17.3"
   }
 }

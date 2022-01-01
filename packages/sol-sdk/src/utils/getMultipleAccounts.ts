@@ -12,7 +12,7 @@ export async function getMultipleAccounts(connection: any, keys: string[], commi
   }
 
   const accounts = unsafeRes.result.value as AccountInfo<string[]>[]
-  return accounts.map(i => {
+  return accounts.map((i) => {
     if (!i) {
       return undefined
     }

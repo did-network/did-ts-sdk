@@ -12,7 +12,7 @@ describe('cache tests', () => {
     const [account] = await getMultipleAccounts(connection, [devWallet], 'single')
 
     let resultCount = 0
-    cache.onCacheUpdate(address => {
+    cache.onCacheUpdate((address) => {
       if (address === devWallet) {
         resultCount += 1
       }
@@ -30,7 +30,7 @@ describe('cache tests', () => {
     const sign = await connection.sendTransaction(tx, [devAccount])
     await connection.confirmTransaction(sign)
 
-    await new Promise(r => setTimeout(r, 2000))
+    await new Promise((r) => setTimeout(r, 2000))
 
     expect(resultCount).toBe(2)
   })

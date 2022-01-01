@@ -26,7 +26,7 @@ async function query(connection: Connection, pubKey: string | PublicKey) {
     return pending
   }
 
-  const query = connection.getAccountInfo(pubkey).then(data => {
+  const query = connection.getAccountInfo(pubkey).then((data) => {
     if (!data) {
       throw new Error('Account not found')
     }

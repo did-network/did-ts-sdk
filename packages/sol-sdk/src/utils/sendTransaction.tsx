@@ -20,7 +20,7 @@ export const sendTransaction = async ({ connection, walletPublicKey, signTransac
   }
 
   let transaction = new Transaction({ feePayer: walletPublicKey })
-  instructions.forEach(instruction => transaction.add(instruction))
+  instructions.forEach((instruction) => transaction.add(instruction))
   transaction.recentBlockhash = (await connection.getRecentBlockhash('max')).blockhash
   if (signers.length > 0) {
     transaction.partialSign(...signers)
@@ -55,7 +55,7 @@ const getErrorForTransaction = async (connection: Connection, txid: string) => {
 
   const errors: string[] = []
   if (tx?.meta && tx.meta.logMessages) {
-    tx.meta.logMessages.forEach(log => {
+    tx.meta.logMessages.forEach((log) => {
       const regex = /Error: (.*)/gm
       let m
       while ((m = regex.exec(log)) !== null) {

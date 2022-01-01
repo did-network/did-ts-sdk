@@ -11,7 +11,7 @@ export function useNativeAccount(connection: Connection, walletPubkey: PublicKey
     if (walletPubkey) {
       const walletAddress = walletPubkey.toBase58()
       setAccount(cache.get(walletAddress))
-      const dispose = cache.onCacheUpdate(address => {
+      const dispose = cache.onCacheUpdate((address) => {
         if (address === walletAddress) {
           setAccount(cache.get(walletAddress))
         }

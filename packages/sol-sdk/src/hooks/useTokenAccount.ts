@@ -22,7 +22,7 @@ export function useTokenAccount(connection: Connection, walletPubkey: PublicKey 
     if (ataPubkey) {
       const ataAddress = ataPubkey.toBase58()
       setAccount(cache.get(ataAddress))
-      const dispose = cache.onCacheUpdate(address => {
+      const dispose = cache.onCacheUpdate((address) => {
         if (address === ataAddress) {
           setAccount(cache.get(ataAddress))
         }

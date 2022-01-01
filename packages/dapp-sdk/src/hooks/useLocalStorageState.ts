@@ -11,7 +11,7 @@ export function useLocalStorageState(key: string, defaultState?: string) {
   })
 
   const setLocalStorageState = useCallback(
-    newState => {
+    (newState) => {
       const changed = state !== newState
       if (!changed) {
         return

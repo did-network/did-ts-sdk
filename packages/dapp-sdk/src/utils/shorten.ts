@@ -1,8 +1,4 @@
-export const shorten = (
-  str?: string | null,
-  start: number = 4,
-  end: number = 4
-): string => {
+export const shorten = (str?: string | null, start: number = 4, end: number = 4): string => {
   if (!str) {
     return ''
   }

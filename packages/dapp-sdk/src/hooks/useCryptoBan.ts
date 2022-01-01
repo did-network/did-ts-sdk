@@ -8,9 +8,9 @@ export function useCryptoBan() {
 
   useEffect(() => {
     fetch('https://www.cloudflare.com/cdn-cgi/trace')
-      .then(res => res.text())
-      .then(t => {
-        let data = t.replace(/[\r\n]+/g, '","').replace(/\=+/g, '":"')
+      .then((res) => res.text())
+      .then((t) => {
+        let data = t.replace(/[\r\n]+/g, '","').replace(/=+/g, '":"')
         data = '{"' + data.slice(0, data.lastIndexOf('","')) + '"}'
         const { loc } = JSON.parse(data)
         const location = loc.toUpperCase()
@@ -18,7 +18,7 @@ export function useCryptoBan() {
         const ban = denyList.has(location)
         setBan(ban)
       })
-      .catch(e => console.error(e))
+      .catch((e) => console.error(e))
   }, [])
 
   return {

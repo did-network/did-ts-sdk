@@ -1,9 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export function useRecursiveTimeout<T>(
-  callback: () => Promise<T> | (() => void),
-  delay: number | null
-) {
+export function useRecursiveTimeout<T>(callback: () => Promise<T> | (() => void), delay: number | null) {
   const savedCallback = useRef(callback)
 
   useEffect(() => {
