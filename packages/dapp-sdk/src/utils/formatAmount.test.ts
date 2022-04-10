@@ -8,7 +8,7 @@ describe('formatAmount', () => {
       ['0', 0, 1, '0.0'],
       ['0', 0, 2, '0.00'],
       ['0', 0, 3, '0.000'],
-      ['0', 0, undefined, '0.0000'],
+      ['0', 0, undefined, '0.00'],
     ]
     cases.forEach(([input, decimals, fixed, expectedOutput]) => {
       const output = formatAmount(input, decimals, fixed)
@@ -21,7 +21,7 @@ describe('formatAmount', () => {
       ['0.000000123', 0, 1, '0.0'],
       ['0.000000456', 0, 2, '0.00'],
       ['0.000000789', 0, 3, '0.000'],
-      ['0.000000999', 0, undefined, '0.0000'],
+      ['0.000000999', 0, undefined, '0.00'],
     ]
 
     cases.forEach(([input, decimals, fixed, expectedOutput]) => {

@@ -16,7 +16,8 @@ export const formatAmount = (balance?: any, decimals: number = 0, fixed?: number
       fixed = fixed ?? 4
     }
     fixed = fixed ?? 2
-    return displayBalance.toFixed(fixed, BigNumber.ROUND_FLOOR)
+    const result = displayBalance.toFixed(fixed, BigNumber.ROUND_FLOOR)
+    return result === '0.0000' ? '0.00' : result
   }
 
   if (displayBalance.gte(1000000)) {
