@@ -28,7 +28,7 @@ export function useTokenAccount(connection: Connection, walletPubkey: PublicKey 
         }
       })
       cache.registerParser(ataAddress, TokenAccountParser)
-      cache.query(connection, ataAddress).then()
+      cache.query(connection, ataAddress).then().catch(console.error)
       return () => {
         dispose()
       }
