@@ -26,12 +26,17 @@ async function query(connection: Connection, pubKey: string | PublicKey) {
     return pending
   }
 
-  const query = connection.getAccountInfo(pubkey).then((data) => {
-    if (!data) {
-      throw new Error('Account not found')
-    }
-    return add(connection, pubkey, data)
-  })
+  const query = connection.getAccountInfo(pubkey)
+    .then((data) => {
+      if (!data) {
+        throw new Error(`Account not found: ${pubkey.toBase58()}`)
+      }
+      return add(connection, pubkey, data)
+    })
+    .catch((error) => {
+      console.warn(error)
+      return undefined
+    })
 
   pendingCalls.set(address, query)
   return query
