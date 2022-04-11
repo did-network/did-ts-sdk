@@ -1,9 +1,9 @@
-export default async function switchNetwork(i: number) {
+export async function switchNetwork(chainId: number) {
   if (window.ethereum && window.ethereum.request) {
     try {
       window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: '0x' + i.toString(16) }],
+        params: [{ chainId: '0x' + chainId.toString(16) }],
       })
     } catch (error) {
       console.error(error)

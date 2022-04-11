@@ -12,6 +12,7 @@ export * from './hooks/useCryptoBan'
 export * from './hooks/useFetch'
 export * from './hooks/useLocalStorageState'
 export * from './hooks/useQuery'
+export * from './hooks/usePrevious'
 export * from './hooks/useRecursiveTimeout'
 
 export * from './utils/formatAmount'
