@@ -13,9 +13,9 @@ const postFetcher = async (url: string, formData?: any) => {
   return res.json()
 }
 
-export function useFetch<T>(path: string, method: 'post' | 'get' = 'get', params: any = undefined) {
+export function useFetch<T>(path: string | null | undefined, method: 'post' | 'get' = 'get', params: any = undefined) {
   const isGet = method === 'get'
-  const url = isGet ? `${path}?${new URLSearchParams(params).toString()}` : path
+  const url = (isGet && params) ? `${path}?${new URLSearchParams(params).toString()}` : path
 
   const key = isGet ? url : [url, params]
   const fetcher = isGet ? getFetcher : postFetcher
