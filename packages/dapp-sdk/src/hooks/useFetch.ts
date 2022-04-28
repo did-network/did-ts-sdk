@@ -13,9 +13,14 @@ const postFetcher = async (url: string, formData?: any) => {
   return res.json()
 }
 
-export function useFetch<T>(url: string, method: 'post' | 'get' = 'get', form: any = undefined) {
-  const fetcher = method === 'get' ? getFetcher : postFetcher
-  const { data, error } = useSWR<T>(form ? [url, form] : url, fetcher)
+export function useFetch<T>(path: string, method: 'post' | 'get' = 'get', params: any = undefined) {
+  const isGet = method === 'get'
+  const url = isGet ? path : `${path}?${new URLSearchParams(params).toString()}`
+
+  const key = isGet ? [url, params] : url
+  const fetcher = isGet ? getFetcher : postFetcher
+
+  const { data, error } = useSWR<T>(path ? key : null, fetcher)
   return {
     data,
     error,
